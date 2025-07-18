@@ -1,19 +1,27 @@
-*{
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 body {
   font-family: sans-serif;
-  background-image:linear-gradient(gray,black);
+  background-image: linear-gradient(gray, black);
   color: #333;
 }
 
 .container {
   max-width: 700px;
-  margin:0 auto;
-  background-color: rgb(247, 245, 242);
-  padding:2rem;
+  margin: auto;
+  background: rgb(247, 245, 242);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+h1 {
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .weather-box {
@@ -29,6 +37,7 @@ body {
 input {
   padding: 8px;
   width: 70%;
+  margin-top: 10px;
   margin-right: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -47,6 +56,32 @@ h2 {
   margin-bottom: 10px;
 }
 
-.lesson ul{
-    list-style:none;
+.lesson ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.lesson li {
+  margin-bottom: 10px;
+}
+
+/* ✅ Responsive styles */
+@media (max-width: 600px) {
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .weather-box {
+    padding: 15px 20px;
+  }
+
+  .container {
+    padding: 1rem;
+  }
 }
