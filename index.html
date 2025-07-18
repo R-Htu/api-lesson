@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather API Lesson</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🌤 Weather API Lesson</h1>
+
+    <section class="lesson">
+      <h2>📘 What is API, HTTP & URL?</h2>
+      <ul>
+        <li>Protocol: Protocol ကတော့ Client နဲ့ Server တို့ အပြန်အလှန်ဆက်သွယ်oို့ အသုံးပြုကြမယ့် ကြားခံ ဆက်
+            သွယ်ရေးနည်းပညာ ပါ။
+        </li> <br>
+        <li><strong>HTTP</strong>: The web’s language — used to request data. HTTP လို့ အတိုကောက် ခေါ်
+            ကြတဲ့ Hyptertext Transfer Protocol ကိုသုံးကြတာပါ။ Client နဲ့ Server တို့က HTTP ကိုအသုံးပြုပြီး
+            ဆက်သွယ်အလုပ်လုပ်ကြ
+        </li> <br>
+        <li><strong>API</strong>: A way for apps to talk to each other and get data.
+            API ဆိုတာ မူရင်းအတိုင်းဆိုရင် Application Program Interface ရဲ့ အတိုကောက်goစ်ပြီးတော့၊ Service
+            များကို ရယူအသုံးပြုရန် သတ်မှတ်ထားသောနည်းလမ်း လို့ ပြောလို့ရပါတယ်။ သူများပေးထားတဲ့ Service
+            ကို ကိုယ်က ရယူအသုံးပြုချင်ရင် သူသတ်မှတ်ထားတဲ့ API ကို ကိုယ်ကသိပြီး သတ်မှတ်ချက်အတိုင်း ရယူ
+            အသုံးပြုရပါမယ်။ ကိုယ်က Service တွေoန်တီးပြီး ပေးချင်တာဆိုရင် ကိုယ့်yက်က အသုံးပြုနည်း API
+            ကို သတ်မှတ်ပေးရပါတယ်။</li> <br>
+
+
+        <li><strong>URL</strong>: URL = Uniform Resource Locator
+            It's just a web address you use to request something from the internet.</li>
+      </ul>
+    </section>
+
+    <section class="weather-box">
+      <h2>☁️ Weather Using Promise</h2>
+      <div id="weather-promise">Loading...</div>
+    </section>
+
+    <section class="weather-box">
+      <h2>☀️ Weather Using Async/Await</h2>
+      <div id="weather-async">Loading...</div>
+    </section>
+
+    <section class="lesson">
+        <h2>💡 Why async/await Is Best</h2>
+        <ul>
+            <li>✅ Cleaner and easier to read than chained <code>.then()</code></li>
+            <li>✅ Handles errors with simple <code>try/catch</code></li>
+            <li>✅ Looks like normal step-by-step code</li>
+            <li>✅ Best for complex flows or if you call many APIs in a row</li>
+        </ul>
+    </section>
+
+  </div>
+
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
