@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Common HTTP Status Codes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9fbfd;
+      color: #333;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #1d3557;
+      margin-bottom: 0.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: white;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    }
+
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #457b9d;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f9ff;
+    }
+
+    .tips, .simulate {
+      margin-top: 2rem;
+      background: #fff;
+      padding: 1rem;
+      border-left: 4px solid #219ebc;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.03);
+    }
+
+    .tips h2, .simulate h2 {
+      color: #023047;
+    }
+
+    a {
+      color: #1d3557;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .emoji {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📘 Common HTTP Status Codes to Know</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>200</td><td class="emoji">✅ OK</td><td>The request was successful. Everything worked as expected.</td></tr>
+      <tr><td>201</td><td class="emoji">✅ Created</td><td>A new resource was successfully created (often after POST).</td></tr>
+      <tr><td>204</td><td class="emoji">✅ No Content</td><td>Request succeeded, but no content is returned (common with DELETE).</td></tr>
+      <tr><td>301</td><td class="emoji">🔁 Moved Permanently</td><td>The resource has a new permanent URL.</td></tr>
+      <tr><td>302</td><td class="emoji">🔁 Found (Temporary)</td><td>The resource temporarily moved to another URL.</td></tr>
+      <tr><td>400</td><td class="emoji">❌ Bad Request</td><td>The server couldn’t understand the request (e.g., malformed syntax).</td></tr>
+      <tr><td>401</td><td class="emoji">🔒 Unauthorized</td><td>You must log in or provide credentials.</td></tr>
+      <tr><td>403</td><td class="emoji">🔒 Forbidden</td><td>You are not allowed to access the resource (even if logged in).</td></tr>
+      <tr><td>404</td><td class="emoji">❌ Not Found</td><td>The requested resource doesn’t exist.</td></tr>
+      <tr><td>405</td><td class="emoji">❌ Method Not Allowed</td><td>The HTTP method (GET, POST, etc.) is not supported for that endpoint.</td></tr>
+      <tr><td>408</td><td class="emoji">🕓 Request Timeout</td><td>The request took too long and was timed out.</td></tr>
+      <tr><td>500</td><td class="emoji">💥 Internal Server Error</td><td>A general server error (the problem is on the server, not your code).</td></tr>
+      <tr><td>502</td><td class="emoji">💥 Bad Gateway</td><td>Server got an invalid response from another server.</td></tr>
+      <tr><td>503</td><td class="emoji">⚠️ Service Unavailable</td><td>The server is overloaded or down for maintenance.</td></tr>
+      <tr><td>504</td><td class="emoji">🕓 Gateway Timeout</td><td>Server didn’t respond in time.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tips">
+    <h2>🧠 Tips for Students:</h2>
+    <ul>
+      <li><strong>2xx</strong> = Success</li>
+      <li><strong>3xx</strong> = Redirect</li>
+      <li><strong>4xx</strong> = Client-side error (your request has an issue)</li>
+      <li><strong>5xx</strong> = Server-side error (the server is having issues)</li>
+    </ul>
+  </div>
+
+  <div class="simulate">
+    <h2>🧪 Want to simulate some of these?</h2>
+    <ul>
+      <li><a href="https://httpstat.us/404" target="_blank">https://httpstat.us/404</a> — returns a 404</li>
+      <li><a href="https://httpstat.us/500" target="_blank">https://httpstat.us/500</a> — returns a 500</li>
+      <li><a href="https://httpstat.us/401" target="_blank">https://httpstat.us/401</a> — returns a 401</li>
+      <li>...just change the number in the URL!</li>
+    </ul>
+  </div>
+
+</body>
+</html>

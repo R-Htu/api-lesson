@@ -53,6 +53,20 @@
         .catch(error => {
             console.log('Not sure', error);
         })
+        
+        const city = 'Yangon';
+        const url2 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=1578e576a667fd90e6dbce9f2e49ba0e`;
+
+        async function getWeatherAsync() {
+            try {
+                const response =  await fetch(url2);
+                const data = await response.json();
+                console.log(data.main.temp)
+
+            } catch(error) {
+                console.log("hmm", error)
+            }   
+        } 
     </script>
 </body>
 </html>

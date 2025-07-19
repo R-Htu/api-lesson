@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Lessons</title>
+</head>
+<body style="padding: 20px;">
+
+  <h2>🔍 What is <code>JSON.stringify()</code>?</h2>
+  <p><strong>JSON.stringify()</strong> converts a JavaScript object or array into a JSON string.</p>
+
+  <p>This is useful when:</p>
+  <ul>
+    <li>📤 You want to send data to a server (via API).</li>
+    <li>💾 You want to store data in <code>localStorage</code>.</li>
+    <li>👀 You want to see a readable version of your object in the console or logs.</li>
+  </ul>
+
+  <h3>✅ Basic Example</h3>
+  <pre><code>
+const person = {
+  name: "Alice",
+  age: 25,
+  isStudent: false
+};
+
+const jsonString = JSON.stringify(person);
+console.log(jsonString);
+// Output: {"name":"Alice","age":25,"isStudent":false}
+  </code></pre>
+
+  <h3>✅ Array of Objects</h3>
+  <pre><code>
+const students = [
+  { name: "John", grade: "A" },
+  { name: "Jane", grade: "B" }
+];
+
+console.log(JSON.stringify(students));
+// Output: [{"name":"John","grade":"A"},{"name":"Jane","grade":"B"}]
+  </code></pre>
+
+  <h3>✅ Store in localStorage</h3>
+  <pre><code>
+const settings = {
+  darkMode: true,
+  fontSize: 16
+};
+
+localStorage.setItem("appSettings", JSON.stringify(settings));
+const saved = JSON.parse(localStorage.getItem("appSettings"));
+console.log(saved.darkMode); // true
+  </code></pre>
+
+  <h3>✅ Pretty Formatting</h3>
+  <pre><code>
+const data = { name: "Tom", score: 80 };
+console.log(JSON.stringify(data, null, 4));
+/*
+{
+    "name": "Tom",
+    "score": 80
+}
+*/
+  </code></pre>
+
+  <h3>✅ Removing some properties</h3>
+  <pre><code>
+const user = { id: 1, name: "Lisa", password: "secret" };
+const safeString = JSON.stringify(user, ["id", "name"]);
+console.log(safeString); // {"id":1,"name":"Lisa"}
+  </code></pre>
+
+  <h3>✅ Using a replacer function</h3>
+  <pre><code>
+const person2 = { name: "Anna", age: 25, city: "Rome" };
+
+const replacer = (key, value) => typeof value === "number" ? undefined : value;
+
+console.log(JSON.stringify(person2, replacer, 2));
+/*
+{
+  "name": "Anna",
+  "city": "Rome"
+}
+*/
+  </code></pre>
+
+  <h3>✅ Custom transform with replacer</h3>
+  <pre><code>
+const product = { name: "Book", price: 15 };
+
+const replace = (key, value) => key === "price" ? `$${value}` : value;
+
+console.log(JSON.stringify(product, replace, 2));
+/*
+{
+  "name": "Book",
+  "price": "$15"
+}
+*/
+  </code></pre>
+
+  <h2>💡 What is <code>JSON.parse()</code>?</h2>
+  <p><strong>JSON.parse()</strong> converts a JSON string back into a JavaScript object.</p>
+  <p>This is useful when:</p>
+  <ul>
+    <li>📥 Receiving data from a server (via fetch or AJAX).</li>
+    <li>📂 Retrieving JSON string from localStorage or a file.</li>
+  </ul>
+
+  <h3>✅ Basic Parse Example</h3>
+  <pre><code>
+const jsonStr = '{"name":"Alice","age":25}';
+const obj = JSON.parse(jsonStr);
+console.log(obj.name); // Alice
+  </code></pre>
+
+  <h3>✅ Parsing array</h3>
+  <pre><code>
+const jsonArray = '[{"name":"Tom"},{"name":"Jerry"}]';
+const arr = JSON.parse(jsonArray);
+console.log(arr[0].name); // Tom
+  </code></pre>
+
+  <h3>✅ Parse with a reviver function</h3>
+  <pre><code>
+const json = '{"price":"$100"}';
+
+const revived = JSON.parse(json, (key, value) => {
+  if (key === "price") {
+    return Number(value.replace("$", ""));
+  }
+  return value;
+});
+console.log(revived.price); // 100
+  </code></pre>
+
+  <h3>❌ Mistakes to Avoid</h3>
+  <ul>
+    <li>JSON keys and string values must be in double quotes.</li>
+    <li><code>JSON.parse("{name:'Tom'}")</code> ❌ ← This will throw an error.</li>
+    <li>Only parse strings that are valid JSON format.</li>
+  </ul>
+
+  <h3>✅ Try this interactive example</h3>
+  <p>You can open your browser console and run this:</p>
+  <pre><code>
+const raw = '{"username":"ruthhtu","active":true}';
+const parsed = JSON.parse(raw);
+console.log(parsed.username); // Output: ruthhtu
+  </code></pre>
+
+  <script>
+    // All the examples above are already explained with inline code.
+    // You can add a live parse test for fun!
+    const testJSON = '{"message":"You are amazing 💖"}';
+    const testParsed = JSON.parse(testJSON);
+    console.log(testParsed.message);
+  </script>
+
+</body>
+</html>
