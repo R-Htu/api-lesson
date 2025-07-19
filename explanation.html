@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const data = {
+            main:{
+                temp:34,
+                tempmin:30,
+
+            }
+        }
+        console.log(data.main.temp);
+        console.log(data.main.tempmin);
+
+        /*
+        const data =  {"coord":{"lon":96.1995,"lat":16.8725},
+         "weather":[
+            {"id":804,
+            "main":"Clouds",
+            "description":"overcast clouds",
+             "icon":"04n"}],
+        "base":"stations",
+        "main":{"temp":299.36,"feels_like":299.36,"temp_min":299.36,"temp_max":299.36,"pressure":1004,"humidity":78,"sea_level":1004,"grnd_level":1004},"visibility":10000,"wind":{"speed":2.32,"deg":180,"gust":4.46},"clouds":{"all":100},"dt":1752848278,"sys":{"country":"MM","sunrise":1752793840,"sunset":1752840705},"timezone":23400,"id":1298824,"name":"Yangon","cod":200}
+
+
+        */
+
+        const stringJson = '{"temp":34, "description":"cloudy" }';
+        // string to js object
+        console.log(JSON.parse(stringJson));
+        console.log(typeof(stringJson))
+        const jsObject = {temp:34, desscription: "cloude"}
+        // js object to json
+        console.log(JSON.stringify(jsObject));
+        console.log(typeof(jsObject))
+
+        
+        const url = 'https://api.openweathermap.org/data/2.5/weather?lat=16.871311&lon=96.199379&appid=1578e576a667fd90e6dbce9f2e49ba0e';
+
+        fetch(url)
+        .then(response => response.json())// json to js object
+        .then(data=>{
+            console.log(data.main.temp);
+            console.log(data.main.temp_max);
+
+        })
+        .catch(error => {
+            console.log('Not sure', error);
+        })
+    </script>
+</body>
+</html>

@@ -5,6 +5,47 @@ const cityAsync = "London";
 // ✅ Using Promise
 function getWeatherWithPromise(city) {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  
+/* https://api.openweathermap.org/data/2.5/weather?q=Yangon&appid=1578e576a667fd90e6dbce9f2e49ba0e&units=metric
+ {
+  "coord": { "lon": 96.1561, "lat": 16.8053 },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 30.98,
+    "feels_like": 37.55,
+    "temp_min": 30.98,
+    "temp_max": 30.98,
+    "pressure": 1005,
+    "humidity": 70,
+    "sea_level": 1005,
+    "grnd_level": 1004
+  },
+  "visibility": 7000,
+  "wind": { "speed": 2.57, "deg": 190 },
+  "clouds": { "all": 75 },
+  "dt": 1752824101,
+  "sys": {
+    "type": 1,
+    "id": 9322,
+    "country": "MM",
+    "sunrise": 1752793857,
+    "sunset": 1752840709
+  },
+  "timezone": 23400,
+  "id": 1298824,
+  "name": "Yangon",
+  "cod": 200
+}
+
+ */
 
   fetch(url)
     .then(response => response.json())

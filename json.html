@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📘 JSON & API Lesson</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 text-gray-800 font-sans p-6">
+  <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-6">
+    <h1 class="text-2xl font-bold text-center mb-4">📘 JSON in Client & Server Communication</h1>
+
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold text-blue-700 mb-2">🔄 What is JSON used for?</h2>
+      <p class="mb-2">JSON is used to send and receive data between client and server:</p>
+      <ul class="list-disc list-inside">
+        <li><strong>Send</strong> data (client ➜ server)</li>
+        <li><strong>Receive</strong> data (server ➜ client)</li>
+      </ul>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold text-blue-700 mb-2">📤 Sending Data Example</h2>
+      <p>We use <code>fetch()</code> and <code>JSON.stringify()</code> to send:</p>
+      <button onclick="showSend()" class="mt-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Show Code</button>
+      <pre id="sendExample" class="hidden mt-3 bg-gray-100 p-3 rounded text-sm"></pre>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold text-blue-700 mb-2">📥 Receiving Data Example</h2>
+      <p>We use <code>res.json()</code> to convert response to JS object:</p>
+      <button onclick="showReceive()" class="mt-2 px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700">Show Code</button>
+      <pre id="receiveExample" class="hidden mt-3 bg-gray-100 p-3 rounded text-sm"></pre>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold text-blue-700 mb-2">📁 Other Uses of JSON</h2>
+      <ul class="list-disc list-inside">
+        <li>APIs</li>
+        <li>Databases (e.g., MongoDB)</li>
+        <li>Configuration files (e.g., <code>package.json</code>)</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    function showSend() {
+      const code = `fetch('https://api.example.com/user', {
+        ethod: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({ name: "Anthony", age: 10 })
+            });`;
+      document.getElementById('sendExample').textContent = code;
+      document.getElementById('sendExample').classList.toggle('hidden');
+    }
+
+    function showReceive() {
+      const code = `fetch('https://api.example.com/user/1')
+        .then(res => res.json()) // convert to JS object
+        .then(data => console.log(data));`;
+      document.getElementById('receiveExample').textContent = code;
+      document.getElementById('receiveExample').classList.toggle('hidden');
+    }
+
+        /* {
+            "coord": { "lon": 96.1561, "lat": 16.8053 },
+            "weather": [
+                {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04d"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 30.98,
+                "feels_like": 37.55,
+                "temp_min": 30.98,
+                "temp_max": 30.98,
+                "pressure": 1005,
+                "humidity": 70,
+                "sea_level": 1005,
+                "grnd_level": 1004
+            },
+            "visibility": 7000,
+            "wind": { "speed": 2.57, "deg": 190 },
+            "clouds": { "all": 75 },
+            "dt": 1752824101,
+            "sys": {
+                "type": 1,
+                "id": 9322,
+                "country": "MM",
+                "sunrise": 1752793857,
+                "sunset": 1752840709
+            },
+            "timezone": 23400,
+            "id": 1298824,
+            "name": "Yangon",
+            "cod": 200
+        }
+            https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key} */
+        const url = 'https://api.openweathermap.org/data/2.5/weather?lat=16.871311&lon=96.199379&appid=1578e576a667fd90e6dbce9f2e49ba0e';
+        console.log(url)
+         fetch(url)
+         .then(response => response.json())
+         .then(data=>{
+            const temp = data.main.temp;
+             const condition = data.weather[0].description;
+            console.log(temp, condition)
+         
+         })
+         .catch(error => {
+            console.log(error);
+         });
+
+      async function getWeatherAsync() {
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log(data);
+            console.log("====================");
+            const temp = data.main.temp;
+             const condition = data.weather[0].description;
+            console.log(temp, condition)
+
+        } catch(error) {
+            console.log(error, "Asbny f")
+        }
+      }
+      getWeatherAsync();
+    </script>
+</body>
+</html>
